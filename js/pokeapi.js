@@ -113,3 +113,15 @@ function cargar(){
       /*Mostrar datos almacenados*/      
       document.getElementById("nombre").innerText = nombre;
 };   
+
+let historyName = [1]; 
+
+// localStorage.getItem() devuelve null si la clave no existe
+let datos_existentes = localStorage.getItem('transito');
+datos_existentes = datos_existentes === null ? [] : JSON.parse(datos_existentes);
+
+datos_existentes.push(datosDeCadaEquipoRecuperado);
+// o
+// datos_existentes.push({tiempo: new Date().getTime(), datos: datosDeCadaEquipoRecuperado});
+
+localStorage.setItem('transito', JSON.stringify(datos_existentes));
